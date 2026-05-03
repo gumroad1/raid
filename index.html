@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Tapu Lele Raid & Shiny Guide (Steeled Resolve Event 2026) ⚔️">
+<meta property="og:title" content="Tapu Lele Raid & Shiny Guide (Steeled Resolve Event 2026) ⚔️">
 <meta property="og:description" content="Stop wasting raid passes. Get the optimized Tapu Lele guide instantly.">
 <meta property="og:image" content="https://i.postimg.cc/wBvX5tV2/22222222222222222.png">
 <meta property="og:url" content="https://gumroad1.github.io/raid">
@@ -21,531 +21,86 @@
     --card: rgba(255,255,255,0.04);
     --border: rgba(255,63,164,0.2);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--dark);
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Animated background */
-  .bg {
-    position: fixed; inset: 0; z-index: 0;
-    background: radial-gradient(ellipse at 20% 20%, rgba(155,31,255,0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 80%, rgba(255,63,164,0.12) 0%, transparent 60%),
-                var(--dark);
-  }
-
-  .particles {
-    position: fixed; inset: 0; z-index: 0; overflow: hidden;
-  }
-  .particle {
-    position: absolute;
-    width: 2px; height: 2px;
-    background: var(--pink);
-    border-radius: 50%;
-    animation: float linear infinite;
-    opacity: 0;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.3; }
-    100% { transform: translateY(-100px) translateX(40px); opacity: 0; }
-  }
-
+  body { background: var(--dark); color: #fff; font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .bg { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse at 20% 20%, rgba(155,31,255,0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(255,63,164,0.12) 0%, transparent 60%), var(--dark); }
+  .particles { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+  .particle { position: absolute; width: 2px; height: 2px; background: var(--pink); border-radius: 50%; animation: float linear infinite; opacity: 0; }
+  @keyframes float { 0% { transform: translateY(100vh) translateX(0); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.3; } 100% { transform: translateY(-100px) translateX(40px); opacity: 0; } }
   .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 20px 16px 60px; }
-
-  /* Header */
-  .header {
-    text-align: center;
-    padding: 40px 0 30px;
-    animation: fadeDown 0.8s ease both;
-  }
-
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .event-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, rgba(255,63,164,0.2), rgba(155,31,255,0.2));
-    border: 1px solid var(--pink);
-    border-radius: 100px;
-    padding: 6px 18px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--pink-light);
-    margin-bottom: 20px;
-    animation: pulse-border 2s ease infinite;
-  }
-
-  @keyframes pulse-border {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255,63,164,0.3); }
-    50% { box-shadow: 0 0 0 6px rgba(255,63,164,0); }
-  }
-
-  h1 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: clamp(36px, 8vw, 58px);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, #fff 0%, var(--pink-light) 50%, var(--purple) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 12px;
-  }
-
-  .subtitle {
-    color: rgba(255,255,255,0.55);
-    font-size: 15px;
-    max-width: 420px;
-    margin: 0 auto 28px;
-    line-height: 1.6;
-  }
-
-  /* Countdown */
-  .countdown-wrap {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 30px;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .countdown-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--pink);
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
-
-  .countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .time-block {
-    text-align: center;
-    background: rgba(255,63,164,0.08);
-    border: 1px solid rgba(255,63,164,0.15);
-    border-radius: 10px;
-    padding: 10px 16px;
-    min-width: 64px;
-  }
-
-  .time-num {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--pink-light);
-    line-height: 1;
-    display: block;
-  }
-
-  .time-lbl {
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-top: 4px;
-    display: block;
-  }
-
-  /* Stats */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 28px;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
-
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 10px;
-    text-align: center;
-  }
-
-  .stat-num {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--pink-light);
-    display: block;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 10px;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4px;
-    display: block;
-  }
-
-  /* Before/After */
-  .ba-section {
-    margin-bottom: 28px;
-    animation: fadeUp 0.8s 0.4s ease both;
-  }
-
-  .section-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 14px;
-    text-align: center;
-  }
-
-  .ba-grid {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .ba-card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 16px;
-  }
-
+  .header { text-align: center; padding: 40px 0 30px; animation: fadeDown 0.8s ease both; }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  .event-badge { display: inline-block; background: linear-gradient(135deg, rgba(255,63,164,0.2), rgba(155,31,255,0.2)); border: 1px solid var(--pink); border-radius: 100px; padding: 6px 18px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--pink-light); margin-bottom: 20px; animation: pulse-border 2s ease infinite; }
+  @keyframes pulse-border { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,63,164,0.3); } 50% { box-shadow: 0 0 0 6px rgba(255,63,164,0); } }
+  h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(36px, 8vw, 58px); font-weight: 700; line-height: 1; letter-spacing: -1px; background: linear-gradient(135deg, #fff 0%, var(--pink-light) 50%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; }
+  .subtitle { color: rgba(255,255,255,0.55); font-size: 15px; max-width: 420px; margin: 0 auto 28px; line-height: 1.6; }
+  .countdown-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 30px; animation: fadeUp 0.8s 0.2s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .countdown-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; font-weight: 600; }
+  .countdown-timer { display: flex; justify-content: center; gap: 12px; }
+  .time-block { text-align: center; background: rgba(255,63,164,0.08); border: 1px solid rgba(255,63,164,0.15); border-radius: 10px; padding: 10px 16px; min-width: 64px; }
+  .time-num { font-family: 'Rajdhani', sans-serif; font-size: 32px; font-weight: 700; color: var(--pink-light); line-height: 1; display: block; }
+  .time-lbl { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px; display: block; }
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 28px; animation: fadeUp 0.8s 0.3s ease both; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 10px; text-align: center; }
+  .stat-num { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; color: var(--pink-light); display: block; line-height: 1; }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; display: block; }
+  .ba-section { margin-bottom: 28px; animation: fadeUp 0.8s 0.4s ease both; }
+  .section-title { font-family: 'Rajdhani', sans-serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; text-align: center; }
+  .ba-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; }
+  .ba-card { background: var(--card); border-radius: 14px; padding: 16px; }
   .ba-card.before { border: 1px solid rgba(239,68,68,0.25); }
   .ba-card.after { border: 1px solid rgba(34,197,94,0.25); }
-
-  .ba-tag {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    display: block;
-  }
-
+  .ba-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
   .ba-card.before .ba-tag { color: #ef4444; }
   .ba-card.after .ba-tag { color: #22c55e; }
-
-  .ba-item {
-    font-size: 12px;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
+  .ba-item { font-size: 12px; color: rgba(255,255,255,0.65); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
   .ba-item span { font-size: 14px; }
   .ba-arrow { font-size: 22px; color: var(--pink); text-align: center; }
-
-  /* Level selector */
-  .level-section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 28px;
-    animation: fadeUp 0.8s 0.5s ease both;
-  }
-
-  .level-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
+  .level-section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 28px; animation: fadeUp 0.8s 0.5s ease both; }
+  .level-title { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
   .level-desc { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
-
-  .level-btns {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-
-  .level-btn {
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: transparent;
-    color: rgba(255,255,255,0.6);
-    font-size: 13px;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .level-btn:hover, .level-btn.active {
-    border-color: var(--pink);
-    background: rgba(255,63,164,0.12);
-    color: #fff;
-  }
-
-  .team-result {
-    background: rgba(255,63,164,0.06);
-    border: 1px solid rgba(255,63,164,0.15);
-    border-radius: 10px;
-    padding: 14px;
-    min-height: 80px;
-    transition: all 0.3s;
-  }
-
-  .team-label {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--pink);
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-
-  .team-pokemon {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .poke-chip {
-    background: rgba(255,255,255,0.08);
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.85);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .team-note {
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-    margin-top: 8px;
-    font-style: italic;
-  }
-
-  /* What you get */
-  .get-section {
-    margin-bottom: 28px;
-    animation: fadeUp 0.8s 0.55s ease both;
-  }
-
-  .get-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .get-header {
-    background: linear-gradient(135deg, rgba(255,63,164,0.15), rgba(155,31,255,0.15));
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .get-header-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-  }
-
+  .level-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .level-btn { padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.6); font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s; }
+  .level-btn:hover, .level-btn.active { border-color: var(--pink); background: rgba(255,63,164,0.12); color: #fff; }
+  .team-result { background: rgba(255,63,164,0.06); border: 1px solid rgba(255,63,164,0.15); border-radius: 10px; padding: 14px; min-height: 80px; transition: all 0.3s; }
+  .team-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; font-weight: 600; }
+  .team-pokemon { display: flex; flex-wrap: wrap; gap: 6px; }
+  .poke-chip { background: rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 10px; font-size: 12px; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.1); }
+  .team-note { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px; font-style: italic; }
+  .get-section { margin-bottom: 28px; animation: fadeUp 0.8s 0.55s ease both; }
+  .get-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .get-header { background: linear-gradient(135deg, rgba(255,63,164,0.15), rgba(155,31,255,0.15)); padding: 16px 20px; border-bottom: 1px solid var(--border); }
+  .get-header-title { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; }
   .get-items { padding: 16px 20px; }
-
-  .get-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-size: 13px;
-    color: rgba(255,255,255,0.8);
-  }
-
+  .get-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; color: rgba(255,255,255,0.8); }
   .get-item:last-child { border-bottom: none; }
   .get-check { color: #22c55e; font-size: 16px; margin-top: 1px; flex-shrink: 0; }
-
-  .get-locked {
-    background: rgba(0,0,0,0.3);
-    border-top: 1px solid rgba(255,63,164,0.15);
-    padding: 14px 20px;
-  }
-
-  .locked-label {
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .locked-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 0;
-    font-size: 13px;
-    color: rgba(255,255,255,0.3);
-    filter: blur(0.5px);
-  }
-
-  /* Download progress */
-  .progress-section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.8s 0.6s ease both;
-  }
-
-  .progress-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
+  .get-locked { background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,63,164,0.15); padding: 14px 20px; }
+  .locked-label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .progress-section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 24px; animation: fadeUp 0.8s 0.6s ease both; }
+  .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
   .progress-label { font-size: 13px; color: rgba(255,255,255,0.6); }
-  .progress-count {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--pink-light);
-  }
-
-  .progress-bar-bg {
-    background: rgba(255,255,255,0.06);
-    border-radius: 100px;
-    height: 8px;
-    overflow: hidden;
-    margin-bottom: 8px;
-  }
-
-  .progress-bar-fill {
-    height: 100%;
-    border-radius: 100px;
-    background: linear-gradient(90deg, var(--purple), var(--pink));
-    width: 0%;
-    transition: width 2s cubic-bezier(0.4,0,0.2,1);
-  }
-
+  .progress-count { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; color: var(--pink-light); }
+  .progress-bar-bg { background: rgba(255,255,255,0.06); border-radius: 100px; height: 8px; overflow: hidden; margin-bottom: 8px; }
+  .progress-bar-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--purple), var(--pink)); width: 0%; transition: width 2s cubic-bezier(0.4,0,0.2,1); }
   .progress-note { font-size: 11px; color: rgba(255,255,255,0.3); }
-
-  /* CTA */
   .cta-section { animation: fadeUp 0.8s 0.65s ease both; }
-
-  .cta-btn {
-    display: block;
-    width: 100%;
-    padding: 20px;
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    border: none;
-    border-radius: 14px;
-    color: #fff;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 32px rgba(255,63,164,0.3);
-  }
-
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(255,63,164,0.45);
-  }
-
-  .cta-btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
+  .cta-btn { display: block; width: 100%; padding: 20px; background: linear-gradient(135deg, var(--pink), var(--purple)); border: none; border-radius: 14px; color: #fff; font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 1px; cursor: pointer; text-decoration: none; text-align: center; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 8px 32px rgba(255,63,164,0.3); }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,63,164,0.45); }
+  .cta-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity 0.2s; }
   .cta-btn:hover::after { opacity: 1; }
-
-  .cta-shine {
-    position: absolute;
-    top: 0; left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shine 3s ease infinite;
-  }
-
-  @keyframes shine {
-    0% { left: -100%; }
-    50%, 100% { left: 150%; }
-  }
-
-  .cta-sub {
-    text-align: center;
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    margin-top: 10px;
-  }
-
-  /* Weakness badges */
-  .type-badges {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.8s 0.15s ease both;
-  }
-
-  .type-badge {
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
+  .cta-shine { position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); animation: shine 3s ease infinite; }
+  @keyframes shine { 0% { left: -100%; } 50%, 100% { left: 150%; } }
+  .cta-sub { text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 10px; }
+  .type-badges { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; animation: fadeUp 0.8s 0.15s ease both; }
+  .type-badge { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 1px; }
   .type-psychic { background: rgba(248,96,168,0.2); border: 1px solid rgba(248,96,168,0.4); color: #f860a8; }
   .type-fairy { background: rgba(214,133,173,0.2); border: 1px solid rgba(214,133,173,0.4); color: #d685ad; }
   .weak-poison { background: rgba(160,99,255,0.2); border: 1px solid rgba(160,99,255,0.4); color: #a063ff; }
   .weak-steel { background: rgba(185,185,203,0.2); border: 1px solid rgba(185,185,203,0.4); color: #b9b9cb; }
   .weak-ghost { background: rgba(112,88,152,0.2); border: 1px solid rgba(112,88,152,0.4); color: #9070c0; }
-
-  @media (max-width: 480px) {
-    .ba-grid { grid-template-columns: 1fr; }
-    .ba-arrow { transform: rotate(90deg); }
-    .stats-row { grid-template-columns: repeat(3,1fr); }
-  }
+  @media (max-width: 480px) { .ba-grid { grid-template-columns: 1fr; } .ba-arrow { transform: rotate(90deg); } .stats-row { grid-template-columns: repeat(3,1fr); } }
 </style>
 </head>
 <body>
@@ -567,46 +122,25 @@
       <span class="type-badge weak-steel">⚙ STEEL</span>
       <span class="type-badge weak-ghost">👻 GHOST</span>
     </div>
-    <p class="subtitle">Stop wasting raid passes on the wrong setup.<br>Get the free optimized guide — instant download.</p>
+    <p class="subtitle">Stop wasting raid passes on the wrong setup.<br>Get the optimized guide — instant download.</p>
   </div>
 
   <!-- Countdown -->
   <div class="countdown-wrap">
     <div class="countdown-label">⏰ Event ends in</div>
     <div class="countdown-timer">
-      <div class="time-block">
-        <span class="time-num" id="cd-d">00</span>
-        <span class="time-lbl">Days</span>
-      </div>
-      <div class="time-block">
-        <span class="time-num" id="cd-h">00</span>
-        <span class="time-lbl">Hours</span>
-      </div>
-      <div class="time-block">
-        <span class="time-num" id="cd-m">00</span>
-        <span class="time-lbl">Mins</span>
-      </div>
-      <div class="time-block">
-        <span class="time-num" id="cd-s">00</span>
-        <span class="time-lbl">Secs</span>
-      </div>
+      <div class="time-block"><span class="time-num" id="cd-d">00</span><span class="time-lbl">Days</span></div>
+      <div class="time-block"><span class="time-num" id="cd-h">00</span><span class="time-lbl">Hours</span></div>
+      <div class="time-block"><span class="time-num" id="cd-m">00</span><span class="time-lbl">Mins</span></div>
+      <div class="time-block"><span class="time-num" id="cd-s">00</span><span class="time-lbl">Secs</span></div>
     </div>
   </div>
 
   <!-- Stats -->
   <div class="stats-row">
-    <div class="stat-card">
-      <span class="stat-num" id="stat-dl">0</span>
-      <span class="stat-label">Downloads</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">~5%</span>
-      <span class="stat-label">Shiny Rate</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">2+</span>
-      <span class="stat-label">Players needed</span>
-    </div>
+    <div class="stat-card"><span class="stat-num" id="stat-dl">0</span><span class="stat-label">Downloads</span></div>
+    <div class="stat-card"><span class="stat-num">~5%</span><span class="stat-label">Shiny Rate</span></div>
+    <div class="stat-card"><span class="stat-num">2+</span><span class="stat-label">Players needed</span></div>
   </div>
 
   <!-- Before / After -->
@@ -631,6 +165,15 @@
     </div>
   </div>
 
+  <!-- MID CTA — before/after-ის შემდეგ -->
+  <div class="cta-section" style="margin-bottom:28px;">
+    <a href="http://gumroad.com/l/onahu" class="cta-btn" target="_blank">
+      <span class="cta-shine"></span>
+      ⚔️ GET THE FULL RAID GUIDE — $1
+    </a>
+    <div class="cta-sub">Instant download · No signup required · Less than a raid pass</div>
+  </div>
+
   <!-- Level selector -->
   <div class="level-section">
     <div class="level-title">⚔️ Find Your Best Team</div>
@@ -647,7 +190,7 @@
     </div>
   </div>
 
-  <!-- Real Counter Table Preview -->
+  <!-- Counter Table Preview -->
   <div class="ba-section">
     <div class="section-title">Preview from the guide</div>
     <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);">
@@ -686,28 +229,13 @@
         <div style="position:relative;">
           <div style="filter:blur(4px);pointer-events:none;opacity:0.35;">
             <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">4</span>
-              <span style="font-size:12px;font-weight:600;">Hoopa (Unbound)</span>
-              <span style="font-size:10px;">Astonish / Shadow Ball</span>
-              <span style="font-size:12px;font-weight:700;text-align:center;">17.44</span>
-              <span style="font-size:11px;text-align:center;">480.2</span>
-              <span style="background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
+              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">4</span><span style="font-size:12px;font-weight:600;">Hoopa (Unbound)</span><span style="font-size:10px;">Astonish / Shadow Ball</span><span style="font-size:12px;font-weight:700;text-align:center;">17.44</span><span style="font-size:11px;text-align:center;">480.2</span><span style="background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
             </div>
             <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">5</span>
-              <span style="font-size:12px;font-weight:600;">Chandelure</span>
-              <span style="font-size:10px;">Hex / Shadow Ball</span>
-              <span style="font-size:12px;font-weight:700;text-align:center;">16.91</span>
-              <span style="font-size:11px;text-align:center;">398.5</span>
-              <span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
+              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">5</span><span style="font-size:12px;font-weight:600;">Chandelure</span><span style="font-size:10px;">Hex / Shadow Ball</span><span style="font-size:12px;font-weight:700;text-align:center;">16.91</span><span style="font-size:11px;text-align:center;">398.5</span><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
             </div>
             <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">6</span>
-              <span style="font-size:12px;font-weight:600;">Mega Banette</span>
-              <span style="font-size:10px;">Shadow Claw / Shadow Ball</span>
-              <span style="font-size:12px;font-weight:700;text-align:center;">16.55</span>
-              <span style="font-size:11px;text-align:center;">412.0</span>
-              <span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
+              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">6</span><span style="font-size:12px;font-weight:600;">Mega Banette</span><span style="font-size:10px;">Shadow Claw / Shadow Ball</span><span style="font-size:12px;font-weight:700;text-align:center;">16.55</span><span style="font-size:11px;text-align:center;">412.0</span><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
             </div>
           </div>
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,0,16,0.55);">
@@ -751,10 +279,10 @@
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" id="prog-fill"></div>
     </div>
-    <div class="progress-note">Updated in real time · Free while event is active</div>
+    <div class="progress-note">Updated in real time · Only available during this event</div>
   </div>
 
-  <!-- CTA -->
+  <!-- Bottom CTA -->
   <div class="cta-section">
     <a href="http://gumroad.com/l/onahu" class="cta-btn" target="_blank">
       <span class="cta-shine"></span>
@@ -766,7 +294,6 @@
 </div>
 
 <script>
-// Particles
 const pc = document.getElementById('particles');
 for (let i = 0; i < 25; i++) {
   const p = document.createElement('div');
@@ -779,7 +306,6 @@ for (let i = 0; i < 25; i++) {
   pc.appendChild(p);
 }
 
-// Countdown — May 4 2026 end
 const endDate = new Date('2026-05-04T23:59:00');
 function updateCountdown() {
   const now = new Date();
@@ -796,13 +322,11 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Animated download counter
 const targetCount = 47;
 let current = 0;
 const statEl = document.getElementById('stat-dl');
 const progCount = document.getElementById('prog-count');
 const progFill = document.getElementById('prog-fill');
-
 setTimeout(() => {
   progFill.style.width = (targetCount / 200 * 100) + '%';
   const interval = setInterval(() => {
@@ -813,28 +337,11 @@ setTimeout(() => {
   }, 60);
 }, 800);
 
-// Team selector
 const teams = {
-  budget: {
-    label: '🟢 Budget Team',
-    pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'],
-    note: 'Works well with 4-6 players. Focus on Poison & Steel moves.'
-  },
-  standard: {
-    label: '🟡 Standard Team',
-    pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'],
-    note: 'Solid team for 2-3 players. Mix of Ghost & Steel attackers.'
-  },
-  pro: {
-    label: '🔴 Pro Team',
-    pokemon: ['Shadow Mewtwo', 'Metagross ×2', 'Chandelure ×2', 'Gengar'],
-    note: 'Fastest possible clear. Can duo with high-level players.'
-  },
-  mega: {
-    label: '⚡ Mega Team',
-    pokemon: ['Mega Banette', 'Metagross ×2', 'Chandelure ×2', 'Shadow Gengar'],
-    note: 'Mega Banette boosts Ghost damage for the whole group.'
-  }
+  budget: { label: '🟢 Budget Team', pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'], note: 'Works well with 4-6 players. Focus on Poison & Steel moves.' },
+  standard: { label: '🟡 Standard Team', pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'], note: 'Solid team for 2-3 players. Mix of Ghost & Steel attackers.' },
+  pro: { label: '🔴 Pro Team', pokemon: ['Shadow Mewtwo', 'Metagross ×2', 'Chandelure ×2', 'Gengar'], note: 'Fastest possible clear. Can duo with high-level players.' },
+  mega: { label: '⚡ Mega Team', pokemon: ['Mega Banette', 'Metagross ×2', 'Chandelure ×2', 'Shadow Gengar'], note: 'Mega Banette boosts Ghost damage for the whole group.' }
 };
 
 function showTeam(type) {
@@ -842,11 +349,7 @@ function showTeam(type) {
   event.target.classList.add('active');
   const t = teams[type];
   const result = document.getElementById('team-result');
-  result.innerHTML = `
-    <div class="team-label">${t.label}</div>
-    <div class="team-pokemon">${t.pokemon.map(p => `<span class="poke-chip">${p}</span>`).join('')}</div>
-    <div class="team-note">${t.note}</div>
-  `;
+  result.innerHTML = `<div class="team-label">${t.label}</div><div class="team-pokemon">${t.pokemon.map(p => `<span class="poke-chip">${p}</span>`).join('')}</div><div class="team-note">${t.note}</div>`;
 }
 </script>
 </body>
