@@ -307,7 +307,7 @@ for (let i = 0; i < 25; i++) {
   pc.appendChild(p);
 }
 
-const endDate = new Date('2026-05-04T23:59:00');
+const endDate = new Date('2026-05-04T23:59:00Z');
 function updateCountdown() {
   const now = new Date();
   let diff = Math.max(0, endDate - now);
