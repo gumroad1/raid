@@ -338,6 +338,14 @@ setTimeout(() => {
   }, 60);
 }, 800);
 
+// Live counter — ყოველ 45 წამში +1
+setInterval(() => {
+  current += 1;
+  statEl.textContent = current;
+  progCount.textContent = current;
+  progFill.style.width = (current / 200 * 100) + '%';
+}, 45000);
+
 const teams = {
   budget: { label: '🟢 Budget Team', pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'], note: 'Works well with 4-6 players. Focus on Poison & Steel moves.' },
   standard: { label: '🟡 Standard Team', pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'], note: 'Solid team for 2-3 players. Mix of Ghost & Steel attackers.' },
