@@ -110,7 +110,7 @@
   <div style="background:#130020;padding:36px 30px;border-radius:20px;text-align:center;border:1px solid rgba(255,63,164,0.4);max-width:280px;width:90%;">
     <div style="font-size:32px;margin-bottom:14px;">🔒</div>
     <div style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px;">Secure Checkout</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;">Opening secure page...</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;">Redirecting to Gumroad...</div>
     <div style="display:flex;justify-content:center;gap:6px;">
       <div style="width:8px;height:8px;border-radius:50%;background:var(--pink);animation:dot 1.2s ease infinite;"></div>
       <div style="width:8px;height:8px;border-radius:50%;background:var(--pink);animation:dot 1.2s 0.2s ease infinite;"></div>
@@ -207,9 +207,9 @@
   <div class="cta-section" style="margin-bottom:28px;">
     <a href="#" onclick="openCheckout(event)" class="cta-btn" target="_blank">
       <span class="cta-shine"></span>
-      🔓 Use 30% Fewer Raid Passes — $1
+      🔓 Unlock Full Raid Setup — $1
     </a>
-    <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
+    <div class="cta-sub">Instant download · No signup required · Less than a raid pass</div>
   </div>
 
   <!-- Level selector -->
@@ -324,9 +324,9 @@
   <div class="cta-section">
     <a href="#" onclick="openCheckout(event)" class="cta-btn" target="_blank">
       <span class="cta-shine"></span>
-      🔓 Use 30% Fewer Raid Passes — $1
+      🔓 Unlock Full Raid Setup — $1
     </a>
-    <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
+    <div class="cta-sub">Instant download · No signup required · Less than a raid pass</div>
   </div>
 
 </div>
@@ -394,10 +394,10 @@ setInterval(() => {
 }, 45000);
 
 const teams = {
-  budget: { label: '🟢 Budget Team', pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'], note: 'Works well with 4-6 players. Focus on Poison & Steel moves.' },
-  standard: { label: '🟡 Standard Team', pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'], note: 'Solid team for 2-3 players. Mix of Ghost & Steel attackers.' },
-  pro: { label: '🔴 Pro Team', pokemon: ['Shadow Mewtwo', 'Metagross ×2', 'Chandelure ×2', 'Gengar'], note: 'Fastest possible clear. Can duo with high-level players.' },
-  mega: { label: '⚡ Mega Team', pokemon: ['Mega Banette', 'Metagross ×2', 'Chandelure ×2', 'Shadow Gengar'], note: 'Mega Banette boosts Ghost damage for the whole group.' }
+  budget: { label: '🟢 Budget Team', pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'], note: 'Focus on Poison & Steel moves.', time: '90–110 sec', players: '4–6 players', revives: '6–8 revives per raid' },
+  standard: { label: '🟡 Standard Team', pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'], note: 'Mix of Ghost & Steel attackers.', time: '75–90 sec', players: '2–4 players', revives: '4–6 revives per raid' },
+  pro: { label: '🔴 Pro Team', pokemon: ['Shadow Mewtwo', 'Metagross ×2', 'Chandelure ×2', 'Gengar'], note: 'Fastest possible clear.', time: '55–70 sec', players: '2–3 players', revives: '2–3 revives per raid' },
+  mega: { label: '⚡ Mega Team', pokemon: ['Mega Banette', 'Metagross ×2', 'Chandelure ×2', 'Shadow Gengar'], note: 'Mega Banette boosts Ghost damage for the whole group.', time: '45–60 sec', players: '2 players', revives: '1–2 revives per raid' }
 };
 
 function showTeam(type) {
@@ -405,7 +405,25 @@ function showTeam(type) {
   event.target.classList.add('active');
   const t = teams[type];
   const result = document.getElementById('team-result');
-  result.innerHTML = `<div class="team-label">${t.label}</div><div class="team-pokemon">${t.pokemon.map(p => `<span class="poke-chip">${p}</span>`).join('')}</div><div class="team-note">${t.note}</div>`;
+  result.innerHTML = `
+    <div class="team-label">${t.label}</div>
+    <div class="team-pokemon">${t.pokemon.map(p => `<span class="poke-chip">${p}</span>`).join('')}</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;">
+      <div style="background:rgba(255,63,164,0.08);border:1px solid rgba(255,63,164,0.15);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">⏱ Clear Time</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--pink-light);">${t.time}</div>
+      </div>
+      <div style="background:rgba(255,63,164,0.08);border:1px solid rgba(255,63,164,0.15);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">👥 Players</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--pink-light);">${t.players}</div>
+      </div>
+      <div style="background:rgba(255,63,164,0.08);border:1px solid rgba(255,63,164,0.15);border-radius:8px;padding:8px;text-align:center;">
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">💊 Revives</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#22c55e;">${t.revives}</div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:8px;font-style:italic;">${t.note}</div>
+  `;
 }
 </script>
 </body>
