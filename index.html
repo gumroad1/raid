@@ -337,7 +337,7 @@ function openCheckout(e) {
   const modal = document.getElementById('checkoutModal');
   modal.style.display = 'flex';
   setTimeout(() => {
-    window.open('http://gumroad.com/l/onahu', '_blank');
+    window.location.href = 'https://gumroad.com/l/onahu';
     setTimeout(() => { modal.style.display = 'none'; }, 1500);
   }, 1200);
 }
