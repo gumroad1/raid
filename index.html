@@ -67,7 +67,6 @@
   .team-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; font-weight: 600; }
   .team-pokemon { display: flex; flex-wrap: wrap; gap: 6px; }
   .poke-chip { background: rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 10px; font-size: 12px; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.1); }
-  .team-note { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px; font-style: italic; }
   .get-section { margin-bottom: 28px; animation: fadeUp 0.8s 0.55s ease both; }
   .get-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
   .get-header { background: linear-gradient(135deg, rgba(255,63,164,0.15), rgba(155,31,255,0.15)); padding: 16px 20px; border-bottom: 1px solid var(--border); }
@@ -100,6 +99,7 @@
   .weak-poison { background: rgba(160,99,255,0.2); border: 1px solid rgba(160,99,255,0.4); color: #a063ff; }
   .weak-steel { background: rgba(185,185,203,0.2); border: 1px solid rgba(185,185,203,0.4); color: #b9b9cb; }
   .weak-ghost { background: rgba(112,88,152,0.2); border: 1px solid rgba(112,88,152,0.4); color: #9070c0; }
+  @keyframes dot { 0%, 100% { opacity: 0.2; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
   @media (max-width: 480px) { .ba-grid { grid-template-columns: 1fr; } .ba-arrow { transform: rotate(90deg); } .stats-row { grid-template-columns: repeat(3,1fr); } }
 </style>
 </head>
@@ -110,7 +110,7 @@
   <div style="background:#130020;padding:36px 30px;border-radius:20px;text-align:center;border:1px solid rgba(255,63,164,0.4);max-width:280px;width:90%;">
     <div style="font-size:32px;margin-bottom:14px;">🔒</div>
     <div style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px;">Secure Checkout</div>
-    <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;">Redirecting to Gumroad...</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;">Opening secure page...</div>
     <div style="display:flex;justify-content:center;gap:6px;">
       <div style="width:8px;height:8px;border-radius:50%;background:var(--pink);animation:dot 1.2s ease infinite;"></div>
       <div style="width:8px;height:8px;border-radius:50%;background:var(--pink);animation:dot 1.2s 0.2s ease infinite;"></div>
@@ -118,13 +118,6 @@
     </div>
   </div>
 </div>
-
-<style>
-@keyframes dot {
-  0%, 100% { opacity: 0.2; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-</style>
 
 <div class="bg"></div>
 <div class="particles" id="particles"></div>
@@ -181,50 +174,60 @@
     <div class="stat-card"><span class="stat-num">2+</span><span class="stat-label">Players needed</span></div>
   </div>
 
-  <!-- Before / After -->
+  <!-- Before / After — OPTION 3: რიცხვებით -->
   <div class="ba-section">
     <div class="section-title">What changes with this guide</div>
     <div class="ba-grid">
       <div class="ba-card before">
         <span class="ba-tag">❌ Before</span>
         <div class="ba-item"><span>😤</span> Wrong counters</div>
-        <div class="ba-item"><span>⏳</span> Slow raid clears</div>
-        <div class="ba-item"><span>💀</span> Wasted revives</div>
+        <div class="ba-item"><span>⏳</span> ~120 sec clear</div>
+        <div class="ba-item"><span>💀</span> 6+ revives used</div>
         <div class="ba-item"><span>🎟️</span> Failed passes</div>
       </div>
       <div class="ba-arrow">→</div>
       <div class="ba-card after">
         <span class="ba-tag">✅ After</span>
         <div class="ba-item"><span>⚡</span> Optimal team</div>
-        <div class="ba-item"><span>🚀</span> Faster clears</div>
-        <div class="ba-item"><span>💊</span> Fewer revives</div>
+        <div class="ba-item"><span>🚀</span> ~65 sec clear</div>
+        <div class="ba-item"><span>💊</span> 1–2 revives used</div>
         <div class="ba-item"><span>✨</span> More attempts</div>
       </div>
     </div>
   </div>
 
-  <!-- MID CTA — before/after-ის შემდეგ -->
+  <!-- MID CTA -->
   <div class="cta-section" style="margin-bottom:28px;">
-    <a href="#" onclick="openCheckout(event)" class="cta-btn" target="_blank">
+    <a href="#" onclick="openCheckout(event)" class="cta-btn">
       <span class="cta-shine"></span>
-      🔓 Unlock Full Raid Setup — $1
+      🔓 Use 30% Fewer Raid Passes — $1
     </a>
-    <div class="cta-sub">Instant download · No signup required · Less than a raid pass</div>
+    <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
   </div>
 
-  <!-- Level selector -->
+  <!-- Level selector — OPTION 1: stats -->
   <div class="level-section">
     <div class="level-title">⚔️ Find Your Best Team</div>
     <div class="level-desc">Select your trainer level to see the recommended raid team</div>
     <div class="level-btns">
-      <button class="level-btn" onclick="showTeam('budget')">Budget</button>
-      <button class="level-btn" onclick="showTeam('standard')">Standard</button>
-      <button class="level-btn" onclick="showTeam('pro')">Pro</button>
-      <button class="level-btn" onclick="showTeam('mega')">Mega</button>
+      <button class="level-btn" onclick="showTeam(event,'budget')">Budget</button>
+      <button class="level-btn" onclick="showTeam(event,'standard')">Standard</button>
+      <button class="level-btn" onclick="showTeam(event,'pro')">Pro</button>
+      <button class="level-btn" onclick="showTeam(event,'mega')">Mega</button>
     </div>
     <div class="team-result" id="team-result">
       <div class="team-label">← Select your level above</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.3)">Your optimized team will appear here</div>
+    </div>
+  </div>
+
+  <!-- Free Pro Tip — OPTION 2 -->
+  <div style="margin-bottom:28px;animation:fadeUp 0.8s 0.52s ease both;">
+    <div style="background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03));border:1px solid rgba(34,197,94,0.25);border-radius:16px;padding:18px 20px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#22c55e;font-weight:600;margin-bottom:8px;">🔓 FREE PRO TIP — UNLOCKED</div>
+      <div style="font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;">Always lead with Ghost-type attacker</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">Ghost moves hit Tapu Lele's Psychic typing for super-effective damage from the first second. This alone cuts 10–15 seconds off your clear time compared to players who open with Steel-types.</div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(34,197,94,0.15);font-size:12px;color:rgba(255,255,255,0.35);">The full guide includes 6 more tips like this — each one saves passes.</div>
     </div>
   </div>
 
@@ -322,11 +325,11 @@
 
   <!-- Bottom CTA -->
   <div class="cta-section">
-    <a href="#" onclick="openCheckout(event)" class="cta-btn" target="_blank">
+    <a href="#" onclick="openCheckout(event)" class="cta-btn">
       <span class="cta-shine"></span>
-      🔓 Unlock Full Raid Setup — $1
+      🔓 Use 30% Fewer Raid Passes — $1
     </a>
-    <div class="cta-sub">Instant download · No signup required · Less than a raid pass</div>
+    <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
   </div>
 
 </div>
@@ -385,7 +388,6 @@ setTimeout(() => {
   }, 60);
 }, 800);
 
-// Live counter — ყოველ 45 წამში +1
 setInterval(() => {
   current += 1;
   statEl.textContent = current;
@@ -393,16 +395,17 @@ setInterval(() => {
   progFill.style.width = (current / 200 * 100) + '%';
 }, 45000);
 
+// OPTION 1 — Team data with stats
 const teams = {
-  budget: { label: '🟢 Budget Team', pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'], note: 'Focus on Poison & Steel moves.', time: '90–110 sec', players: '4–6 players', revives: '6–8 revives per raid' },
-  standard: { label: '🟡 Standard Team', pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'], note: 'Mix of Ghost & Steel attackers.', time: '75–90 sec', players: '2–4 players', revives: '4–6 revives per raid' },
-  pro: { label: '🔴 Pro Team', pokemon: ['Shadow Mewtwo', 'Metagross ×2', 'Chandelure ×2', 'Gengar'], note: 'Fastest possible clear.', time: '55–70 sec', players: '2–3 players', revives: '2–3 revives per raid' },
-  mega: { label: '⚡ Mega Team', pokemon: ['Mega Banette', 'Metagross ×2', 'Chandelure ×2', 'Shadow Gengar'], note: 'Mega Banette boosts Ghost damage for the whole group.', time: '45–60 sec', players: '2 players', revives: '1–2 revives per raid' }
+  budget: { label: '🟢 Budget Team', pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'], note: 'Focus on Poison & Steel moves.', time: '90–110 sec', players: '4–6 players', revives: '6–8 revives' },
+  standard: { label: '🟡 Standard Team', pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'], note: 'Mix of Ghost & Steel attackers.', time: '75–90 sec', players: '2–4 players', revives: '4–6 revives' },
+  pro: { label: '🔴 Pro Team', pokemon: ['Shadow Mewtwo', 'Metagross ×2', 'Chandelure ×2', 'Gengar'], note: 'Fastest possible clear.', time: '55–70 sec', players: '2–3 players', revives: '2–3 revives' },
+  mega: { label: '⚡ Mega Team', pokemon: ['Mega Banette', 'Metagross ×2', 'Chandelure ×2', 'Shadow Gengar'], note: 'Mega Banette boosts Ghost damage for the whole group.', time: '45–60 sec', players: '2 players', revives: '1–2 revives' }
 };
 
-function showTeam(type) {
+function showTeam(e, type) {
   document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  e.target.classList.add('active');
   const t = teams[type];
   const result = document.getElementById('team-result');
   result.innerHTML = `
