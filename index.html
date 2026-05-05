@@ -65,8 +65,6 @@
   .level-btn:hover, .level-btn.active { border-color: var(--pink); background: rgba(255,63,164,0.12); color: #fff; }
   .team-result { background: rgba(255,63,164,0.06); border: 1px solid rgba(255,63,164,0.15); border-radius: 10px; padding: 14px; min-height: 80px; transition: all 0.3s; }
   .team-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; font-weight: 600; }
-  .team-pokemon { display: flex; flex-wrap: wrap; gap: 6px; }
-  .poke-chip { background: rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 10px; font-size: 12px; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.1); }
   .get-section { margin-bottom: 28px; animation: fadeUp 0.8s 0.55s ease both; }
   .get-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
   .get-header { background: linear-gradient(135deg, rgba(255,63,164,0.15), rgba(155,31,255,0.15)); padding: 16px 20px; border-bottom: 1px solid var(--border); }
@@ -105,7 +103,6 @@
 </head>
 <body>
 
-<!-- Checkout Modal -->
 <div id="checkoutModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(6px);">
   <div style="background:#130020;padding:36px 30px;border-radius:20px;text-align:center;border:1px solid rgba(255,63,164,0.4);max-width:280px;width:90%;">
     <div style="font-size:32px;margin-bottom:14px;">🔒</div>
@@ -123,8 +120,6 @@
 <div class="particles" id="particles"></div>
 
 <div class="wrap">
-
-  <!-- Header -->
   <div class="header">
     <div class="event-badge">⚡ Steeled Resolve Event • Active Now</div>
     <h1>WIN TAPU LELE<br>FASTER</h1>
@@ -140,23 +135,6 @@
     <p class="subtitle">Stop wasting raid passes on the wrong setup.<br>Preview the system below — full guide available instantly.</p>
   </div>
 
-  <!-- Scroll Stopper Banner -->
-  <div style="margin-bottom:28px;animation:fadeUp 0.8s 0.1s ease both;">
-    <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(135deg,rgba(155,31,255,0.15),rgba(255,63,164,0.15));">
-      <div style="padding:24px 20px;text-align:center;">
-        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--pink);font-weight:600;margin-bottom:10px;">⚡ FREE RAID SETUP</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;line-height:1.1;margin-bottom:12px;">Top Counters + Team Builder<br><span style="color:var(--pink-light);">Unlocked Below 👇</span></div>
-        <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-          <span style="background:rgba(255,63,164,0.15);border:1px solid rgba(255,63,164,0.3);border-radius:100px;padding:5px 14px;font-size:12px;">✓ Best counters</span>
-          <span style="background:rgba(255,63,164,0.15);border:1px solid rgba(255,63,164,0.3);border-radius:100px;padding:5px 14px;font-size:12px;">✓ Budget → Pro teams</span>
-          <span style="background:rgba(155,31,255,0.15);border:1px solid rgba(155,31,255,0.3);border-radius:100px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,0.5);">🔒 +7 hidden counters</span>
-        </div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.4);">Scroll down to preview • Full guide $1</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Countdown -->
   <div class="countdown-wrap">
     <div class="countdown-label">⏰ Event ends in</div>
     <div class="countdown-timer">
@@ -167,14 +145,12 @@
     </div>
   </div>
 
-  <!-- Stats -->
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num" id="stat-dl">0</span><span class="stat-label">Downloads</span></div>
     <div class="stat-card"><span class="stat-num">~5%</span><span class="stat-label">Shiny Rate</span></div>
     <div class="stat-card"><span class="stat-num">2+</span><span class="stat-label">Players needed</span></div>
   </div>
 
-  <!-- Before / After — OPTION 3: რიცხვებით -->
   <div class="ba-section">
     <div class="section-title">What changes with this guide</div>
     <div class="ba-grid">
@@ -183,7 +159,6 @@
         <div class="ba-item"><span>😤</span> Wrong counters</div>
         <div class="ba-item"><span>⏳</span> ~120 sec clear</div>
         <div class="ba-item"><span>💀</span> 6+ revives used</div>
-        <div class="ba-item"><span>🎟️</span> Failed passes</div>
       </div>
       <div class="ba-arrow">→</div>
       <div class="ba-card after">
@@ -191,168 +166,23 @@
         <div class="ba-item"><span>⚡</span> Optimal team</div>
         <div class="ba-item"><span>🚀</span> ~65 sec clear</div>
         <div class="ba-item"><span>💊</span> 1–2 revives used</div>
-        <div class="ba-item"><span>✨</span> More attempts</div>
       </div>
     </div>
   </div>
 
-  <!-- Mistake Reveal -->
-  <div style="margin-bottom:28px;animation:fadeUp 0.8s 0.42s ease both;">
-    <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:16px;padding:18px 20px;">
-      <div style="color:#ef4444;font-weight:700;margin-bottom:10px;font-size:14px;">⚠️ Most players don't realize this:</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;">
-        Using Steel-type leads vs Tapu Lele slows your clear time by <strong>10–20 seconds</strong> compared to optimized Ghost openers. Most players never fix this because they don't know it's wrong.
-        <br><br>
-        That's the difference between:<br>
-        <span style="color:#ef4444;">• 5–6 raids/hour ❌</span><br>
-        <span style="color:#22c55e;">• 10+ raids/hour ✅</span>
+  <!-- YOUR TEXT INSERTED HERE -->
+  <div style="margin-bottom:28px; animation:fadeUp 0.8s 0.52s ease both;">
+    <div style="background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03)); border:1px solid rgba(34,197,94,0.25); border-radius:16px; padding:18px 20px;">
+      <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#22c55e; font-weight:600; margin-bottom:8px;">🔓 FREE PRO TIP — UNLOCKED</div>
+      <div style="font-family:'Rajdhani',sans-serif; font-size:17px; font-weight:700; margin-bottom:6px;">Always lead with Ghost-type attacker</div>
+      <div style="margin-top:10px; font-size:13px; color:rgba(255,255,255,0.65); line-height:1.6;">
+        This alone improves your clear time…<br>
+        <strong>But the full system stacks 5+ optimizations like this — that's how you reach ~60 sec clears.</strong>
       </div>
+      <div style="margin-top:12px; padding-top:12px; border-top:1px solid rgba(34,197,94,0.15); font-size:12px; color:rgba(255,255,255,0.35);">The full guide includes 6 more tips like this — each one saves passes.</div>
     </div>
   </div>
 
-  <!-- MID CTA -->
-  <div class="cta-section" style="margin-bottom:28px;">
-    <a href="#" onclick="openCheckout(event)" class="cta-btn">
-      <span class="cta-shine"></span>
-      🔓 Beat Tapu Lele with 2 Players — $1
-    </a>
-    <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
-  </div>
-
-  <!-- Level selector — OPTION 1: stats -->
-  <div class="level-section">
-    <div class="level-title">⚔️ Find Your Best Team</div>
-    <div class="level-desc">Select your trainer level to see the recommended raid team</div>
-    <div class="level-btns">
-      <button class="level-btn" onclick="showTeam(event,'budget')">Budget</button>
-      <button class="level-btn" onclick="showTeam(event,'standard')">Standard</button>
-      <button class="level-btn" onclick="showTeam(event,'pro')">Pro</button>
-      <button class="level-btn" onclick="showTeam(event,'mega')">Mega</button>
-    </div>
-    <div class="team-result" id="team-result">
-      <div class="team-label">← Select your level above</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.3)">Your optimized team will appear here</div>
-    </div>
-  </div>
-
-  <!-- Free Pro Tip — OPTION 2 -->
-  <div style="margin-bottom:28px;animation:fadeUp 0.8s 0.52s ease both;">
-    <div style="background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03));border:1px solid rgba(34,197,94,0.25);border-radius:16px;padding:18px 20px;">
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#22c55e;font-weight:600;margin-bottom:8px;">🔓 FREE PRO TIP — UNLOCKED</div>
-      <div style="font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;">Always lead with Ghost-type attacker</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">Ghost moves hit Tapu Lele's Psychic typing for super-effective damage from the first second. This alone cuts 10–15 seconds off your clear time compared to players who open with Steel-types.</div>
-<div style="margin-top:10px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">
-  This alone improves your clear time…<br>
-  <strong>But the full system stacks 5+ optimizations like this — that's how you reach ~60 sec clears.</strong>
-</div>
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(34,197,94,0.15);font-size:12px;color:rgba(255,255,255,0.35);">The full guide includes 6 more tips like this — each one saves passes.</div>
-    </div>
-  </div>
-
-  <!-- Counter Table Preview -->
-  <div class="ba-section">
-    <div class="section-title">Preview from the guide</div>
-    <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);">
-      <div style="background:linear-gradient(135deg,rgba(255,63,164,0.2),rgba(155,31,255,0.2));padding:12px 16px;border-bottom:1px solid var(--border);">
-        <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;">⚔️ BEST COUNTERS (TOP PICKS)</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">Ranked by DPS & TDO performance</div>
-      </div>
-      <div style="background:var(--card);">
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:600;">
-          <span>#</span><span>Pokémon</span><span>Moveset</span><span style="text-align:center;">DPS</span><span style="text-align:center;">TDO</span><span style="text-align:center;">Rank</span>
-        </div>
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
-          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">1</span>
-          <span style="font-size:12px;font-weight:600;">Mewtwo</span>
-          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Psycho Cut / Psystrike</span>
-          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">19.28</span>
-          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">561.6</span>
-          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
-        </div>
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;background:rgba(255,255,255,0.02);">
-          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">2</span>
-          <span style="font-size:12px;font-weight:600;">Shadow Mewtwo 🔥</span>
-          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Psycho Cut / Psystrike</span>
-          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">20.12</span>
-          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">586.6</span>
-          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
-        </div>
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
-          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">3</span>
-          <span style="font-size:12px;font-weight:600;">Deoxys (Attack)</span>
-          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Zen Headbutt / Psystrike</span>
-          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">17.89</span>
-          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">451.1</span>
-          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
-        </div>
-        <div style="position:relative;">
-          <div style="filter:blur(4px);pointer-events:none;opacity:0.35;">
-            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">4</span><span style="font-size:12px;font-weight:600;">Hoopa (Unbound)</span><span style="font-size:10px;">Astonish / Shadow Ball</span><span style="font-size:12px;font-weight:700;text-align:center;">17.44</span><span style="font-size:11px;text-align:center;">480.2</span><span style="background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
-            </div>
-            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">5</span><span style="font-size:12px;font-weight:600;">Chandelure</span><span style="font-size:10px;">Hex / Shadow Ball</span><span style="font-size:12px;font-weight:700;text-align:center;">16.91</span><span style="font-size:11px;text-align:center;">398.5</span><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
-            </div>
-            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">6</span><span style="font-size:12px;font-weight:600;">Mega Banette</span><span style="font-size:10px;">Shadow Claw / Shadow Ball</span><span style="font-size:12px;font-weight:700;text-align:center;">16.55</span><span style="font-size:11px;text-align:center;">412.0</span><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
-            </div>
-          </div>
-          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,0,16,0.55);">
-            <div style="font-size:22px;margin-bottom:6px;">🔒</div>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--pink-light);">+7 more counters in full guide</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;">Budget picks • Shadow variants • Mega options</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- What you get -->
-  <div class="get-section">
-    <div class="section-title">What's inside the full guide</div>
-    <div class="get-card">
-      <div class="get-header">
-        <div class="get-header-title">⚔️ FULL GUIDE — Complete System</div>
-      </div>
-      <div class="get-items">
-        <div class="get-item"><span class="get-check">✓</span> Best Tapu Lele counters — full ranked list</div>
-        <div class="get-item"><span class="get-check">✓</span> Budget → Standard → Pro → Mega teams</div>
-        <div class="get-item"><span class="get-check">✓</span> Step-by-step raid strategy</div>
-        <div class="get-item"><span class="get-check">✓</span> Raid Hour efficiency system (8-12 raids/hour)</div>
-        <div class="get-item"><span class="get-check">✓</span> Weather boost advantage breakdown</div>
-        <div class="get-item"><span class="get-check">✓</span> Shiny hunting optimization</div>
-      </div>
-      <div class="get-locked">
-        <div class="locked-label">💡 Costs less than a single raid pass</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;">but can save you multiple failed raids</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Download counter -->
-  <div class="progress-section">
-    <div class="progress-header">
-      <span class="progress-label">Players already using this guide</span>
-      <span class="progress-count" id="prog-count">0</span>
-    </div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" id="prog-fill"></div>
-    </div>
-    <div class="progress-note">Updated in real time · Only available during this event</div>
-  </div>
-
-  <!-- Why not Google -->
-  <div style="margin-bottom:24px;animation:fadeUp 0.8s 0.62s ease both;">
-    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:18px 20px;text-align:center;">
-      <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.8;">
-        Yes, you can Google this.<br>
-        But you'll get scattered info, outdated counters, and no clear setup.<br><br>
-        <span style="color:rgba(255,255,255,0.75);font-weight:600;">This gives you a ready-to-use system in under 2 minutes.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom CTA -->
   <div class="cta-section">
     <a href="#" onclick="openCheckout(event)" class="cta-btn">
       <span class="cta-shine"></span>
@@ -360,7 +190,6 @@
     </a>
     <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
   </div>
-
 </div>
 
 <script>
@@ -405,58 +234,13 @@ updateCountdown();
 const targetCount = 87;
 let current = 0;
 const statEl = document.getElementById('stat-dl');
-const progCount = document.getElementById('prog-count');
-const progFill = document.getElementById('prog-fill');
 setTimeout(() => {
-  progFill.style.width = (targetCount / 200 * 100) + '%';
   const interval = setInterval(() => {
     current += Math.ceil((targetCount - current) / 8);
     if (current >= targetCount) { current = targetCount; clearInterval(interval); }
     statEl.textContent = current;
-    progCount.textContent = current;
   }, 60);
 }, 800);
-
-setInterval(() => {
-  current += 1;
-  statEl.textContent = current;
-  progCount.textContent = current;
-  progFill.style.width = (current / 200 * 100) + '%';
-}, 45000);
-
-// OPTION 1 — Team data with stats
-const teams = {
-  budget: { label: '🟢 Budget Team', pokemon: ['Gengar', 'Excadrill', 'Scizor', 'Beedrill', 'Golbat'], note: 'Focus on Poison & Steel moves.', time: '90–110 sec', players: '4–6 players', revives: '6–8 revives' },
-  standard: { label: '🟡 Standard Team', pokemon: ['Metagross', 'Chandelure', 'Gengar', 'Dialga', 'Excadrill'], note: 'Mix of Ghost & Steel attackers.', time: '75–90 sec', players: '2–4 players', revives: '4–6 revives' },
-  pro: { label: '🔴 Pro Team', pokemon: ['Shadow Mewtwo', 'Metagross ×2', 'Chandelure ×2', 'Gengar'], note: 'Fastest possible clear.', time: '55–70 sec', players: '2–3 players', revives: '2–3 revives' },
-  mega: { label: '⚡ Mega Team', pokemon: ['Mega Banette', 'Metagross ×2', 'Chandelure ×2', 'Shadow Gengar'], note: 'Mega Banette boosts Ghost damage for the whole group.', time: '45–60 sec', players: '2 players', revives: '1–2 revives' }
-};
-
-function showTeam(e, type) {
-  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
-  e.target.classList.add('active');
-  const t = teams[type];
-  const result = document.getElementById('team-result');
-  result.innerHTML = `
-    <div class="team-label">${t.label}</div>
-    <div class="team-pokemon">${t.pokemon.map(p => `<span class="poke-chip">${p}</span>`).join('')}</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;">
-      <div style="background:rgba(255,63,164,0.08);border:1px solid rgba(255,63,164,0.15);border-radius:8px;padding:8px;text-align:center;">
-        <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">⏱ Clear Time</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--pink-light);">${t.time}</div>
-      </div>
-      <div style="background:rgba(255,63,164,0.08);border:1px solid rgba(255,63,164,0.15);border-radius:8px;padding:8px;text-align:center;">
-        <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">👥 Players</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--pink-light);">${t.players}</div>
-      </div>
-      <div style="background:rgba(255,63,164,0.08);border:1px solid rgba(255,63,164,0.15);border-radius:8px;padding:8px;text-align:center;">
-        <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">💊 Revives</div>
-        <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#22c55e;">${t.revives}</div>
-      </div>
-    </div>
-    <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:8px;font-style:italic;">${t.note}</div>
-  `;
-}
 </script>
 </body>
 </html>
