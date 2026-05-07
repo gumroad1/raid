@@ -96,7 +96,52 @@
   .type-badge { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 1px; }
   .weak-steel { background: rgba(185,185,203,0.2); border: 1px solid rgba(185,185,203,0.4); color: #b9b9cb; }
   @keyframes dot { 0%, 100% { opacity: 0.2; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
-  @media (max-width: 480px) { .ba-grid { grid-template-columns: 1fr; } .ba-arrow { transform: rotate(90deg); } .stats-row { grid-template-columns: repeat(3,1fr); } }
+
+  /* Stats info card */
+  .nihilego-stats { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 28px; animation: fadeUp 0.8s 0.25s ease both; }
+  .nihilego-stats h2 { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 14px; color: var(--pink-light); }
+  .stat-line { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+  .stat-line .label { width: 44px; color: rgba(255,255,255,0.5); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .stat-bar-bg { flex: 1; height: 7px; background: rgba(255,255,255,0.07); border-radius: 100px; overflow: hidden; }
+  .stat-bar-fill { height: 100%; border-radius: 100px; }
+  .stat-val { width: 36px; text-align: right; font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; }
+  .hp-bar { background: linear-gradient(90deg, #22c55e, #4ade80); }
+  .atk-bar { background: linear-gradient(90deg, #ef4444, #f87171); }
+  .def-bar { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .cp-info { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+  .cp-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 10px 12px; }
+  .cp-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+  .cp-val { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 700; color: #fff; }
+  .boost-info { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 6px; }
+
+  /* Moves section */
+  .moves-section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 28px; animation: fadeUp 0.8s 0.3s ease both; }
+  .moves-section h2 { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 14px; color: var(--pink-light); }
+  .moves-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .move-group h3 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+  .move-chip { display: flex; align-items: center; gap: 7px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 7px 10px; margin-bottom: 6px; font-size: 12px; color: rgba(255,255,255,0.8); }
+  .move-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dot-normal { background: #a8a878; }
+  .dot-poison { background: #a040a0; }
+  .dot-rock { background: #b8a038; }
+
+  /* Counters section */
+  .counters-section { margin-bottom: 28px; animation: fadeUp 0.8s 0.45s ease both; }
+  .counters-section h2 { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .counters-source { font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+  .counters-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .counter-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+  .counter-rank { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; color: var(--pink); margin-bottom: 4px; }
+  .counter-name { font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.2; }
+  .counter-moves { display: flex; flex-direction: column; gap: 4px; }
+  .counter-move { font-size: 11px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 5px; }
+  .move-type-icon { font-size: 12px; }
+  .legacy-mark { color: rgba(255,255,255,0.3); font-size: 10px; }
+  .tier-s-plus { border-color: rgba(34,197,94,0.4); }
+  .tier-s { border-color: rgba(59,130,246,0.4); }
+  .tier-a { border-color: rgba(245,158,11,0.4); }
+
+  @media (max-width: 480px) { .ba-grid { grid-template-columns: 1fr; } .ba-arrow { transform: rotate(90deg); } .stats-row { grid-template-columns: repeat(3,1fr); } .counters-grid { grid-template-columns: 1fr; } .moves-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -126,11 +171,11 @@
     <h1>BEAT NIHILEGO<br>FASTER</h1>
     <div style="font-family:'Rajdhani',sans-serif;font-size:20px;color:var(--pink-light);margin-bottom:8px;letter-spacing:1px;">Use Fewer Passes</div>
     <div class="type-badges">
-      <span class="type-badge" style="background:rgba(139,90,43,0.2);border:1px solid rgba(139,90,43,0.4);color:#c8956c;">🪨 ROCK</span>
-      <span class="type-badge" style="background:rgba(160,99,255,0.2);border:1px solid rgba(160,99,255,0.4);color:#a063ff;">☠ POISON</span>
-      <span style="color:rgba(255,255,255,0.25);font-size:12px;padding:6px 4px;">weak to</span>
-      <span class="type-badge" style="background:rgba(64,164,255,0.2);border:1px solid rgba(64,164,255,0.4);color:#40a4ff;">💧 WATER</span>
-      <span class="type-badge" style="background:rgba(200,160,80,0.2);border:1px solid rgba(200,160,80,0.4);color:#c8a050;">🌍 GROUND</span>
+      <span class="type-badge" style="background:rgba(184,160,56,0.2);border:1px solid rgba(184,160,56,0.4);color:#c8b040;">🪨 ROCK</span>
+      <span class="type-badge" style="background:rgba(160,64,160,0.2);border:1px solid rgba(160,64,160,0.4);color:#c060c0;">☠ POISON</span>
+      <span style="color:rgba(255,255,255,0.2);font-size:16px;padding:0 2px;align-self:center;">|</span>
+      <span style="color:rgba(255,255,255,0.3);font-size:11px;letter-spacing:1px;align-self:center;">weak to</span>
+      <span class="type-badge" style="background:rgba(200,160,80,0.2);border:1px solid rgba(200,160,80,0.4);color:#c8a050;">🌍 GROUND ×2</span>
       <span class="type-badge" style="background:rgba(248,96,168,0.2);border:1px solid rgba(248,96,168,0.4);color:#f860a8;">🧠 PSYCHIC</span>
       <span class="type-badge weak-steel">⚙ STEEL</span>
     </div>
@@ -155,7 +200,7 @@
 
   <!-- Countdown -->
   <div class="countdown-wrap">
-    <div class="countdown-label">⏰ Event ends in</div>
+    <div class="countdown-label">⏰ Event ends in (May 12, 2026)</div>
     <div class="countdown-timer">
       <div class="time-block"><span class="time-num" id="cd-d">00</span><span class="time-lbl">Days</span></div>
       <div class="time-block"><span class="time-num" id="cd-h">00</span><span class="time-lbl">Hours</span></div>
@@ -164,11 +209,62 @@
     </div>
   </div>
 
-  <!-- Stats -->
+  <!-- Nihilego Stats -->
+  <div class="nihilego-stats">
+    <h2>📊 Nihilego Stats (No. 793)</h2>
+    <div class="stat-line">
+      <span class="label">HP</span>
+      <div class="stat-bar-bg"><div class="stat-bar-fill hp-bar" style="width:96%"></div></div>
+      <span class="stat-val" style="color:#4ade80;">240</span>
+    </div>
+    <div class="stat-line">
+      <span class="label">ATK</span>
+      <div class="stat-bar-bg"><div class="stat-bar-fill atk-bar" style="width:100%"></div></div>
+      <span class="stat-val" style="color:#f87171;">249</span>
+    </div>
+    <div class="stat-line">
+      <span class="label">DEF</span>
+      <div class="stat-bar-bg"><div class="stat-bar-fill def-bar" style="width:84%"></div></div>
+      <span class="stat-val" style="color:#60a5fa;">210</span>
+    </div>
+    <div class="cp-info">
+      <div class="cp-box">
+        <div class="cp-label">Catch CP</div>
+        <div class="cp-val">2167 – 2256</div>
+      </div>
+      <div class="cp-box">
+        <div class="cp-label">Boosted CP</div>
+        <div class="cp-val">2709 – 2821</div>
+      </div>
+    </div>
+    <div class="boost-info">☁ Boosted by: <strong style="color:#fff;">Partly Cloudy &amp; Cloudy</strong></div>
+  </div>
+
+  <!-- Stats summary -->
   <div class="stats-row">
     <div class="stat-card"><span class="stat-num" id="stat-dl">0</span><span class="stat-label">Downloads</span></div>
     <div class="stat-card"><span class="stat-num">~5%</span><span class="stat-label">Shiny Rate</span></div>
-    <div class="stat-card"><span class="stat-num">2+</span><span class="stat-label">Players needed</span></div>
+    <div class="stat-card"><span class="stat-num">2–4</span><span class="stat-label">Players Needed</span></div>
+  </div>
+
+  <!-- Moves -->
+  <div class="moves-section">
+    <h2>⚡ Nihilego's Moves</h2>
+    <div class="moves-grid">
+      <div class="move-group">
+        <h3>Fast Moves</h3>
+        <div class="move-chip"><div class="move-dot dot-normal"></div> Pound</div>
+        <div class="move-chip"><div class="move-dot dot-poison"></div> Acid</div>
+        <div class="move-chip"><div class="move-dot dot-poison"></div> Poison Jab</div>
+      </div>
+      <div class="move-group">
+        <h3>Charge Moves</h3>
+        <div class="move-chip"><div class="move-dot dot-rock"></div> Rock Slide</div>
+        <div class="move-chip"><div class="move-dot dot-rock"></div> Power Gem</div>
+        <div class="move-chip"><div class="move-dot dot-poison"></div> Sludge Bomb</div>
+        <div class="move-chip"><div class="move-dot dot-poison"></div> Gunk Shot</div>
+      </div>
+    </div>
   </div>
 
   <!-- Before / After -->
@@ -216,7 +312,186 @@
     <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
   </div>
 
-  <!-- Level selector -->
+  <!-- General Counters (from image) -->
+  <div class="counters-section">
+    <h2>⚔️ Best Counters</h2>
+    <div class="counters-source">Recommendations by Pokebattler</div>
+    <div class="counters-grid">
+      <div class="counter-card tier-s-plus">
+        <div class="counter-rank">#1 — S+ TIER</div>
+        <div class="counter-name">Primal Groudon</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud Shot</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Precipice Blades <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-s-plus">
+        <div class="counter-rank">#2 — S+ TIER</div>
+        <div class="counter-name">Mega Garchomp</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud Shot</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Earth Power <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-s-plus">
+        <div class="counter-rank">#3 — S+ TIER</div>
+        <div class="counter-name">Landorus (Therian)</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud Shot</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Sandsear Storm <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-s-plus">
+        <div class="counter-rank">#4 — S+ TIER</div>
+        <div class="counter-name">Groudon</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud Shot</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Precipice Blades <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-s">
+        <div class="counter-rank">#5 — S TIER</div>
+        <div class="counter-name">Excadrill</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud-Slap</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Scorching Sands</div>
+        </div>
+      </div>
+      <div class="counter-card tier-s">
+        <div class="counter-rank">#6 — S TIER</div>
+        <div class="counter-name">Zamazenta (Crowned Shield)</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">⚙</span> Metal Claw</div>
+          <div class="counter-move"><span class="move-type-icon">⚙</span> Behemoth Bash <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-s">
+        <div class="counter-rank">#7 — S TIER</div>
+        <div class="counter-name">Necrozma (Dusk Mane)</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🧠</span> Psycho Cut</div>
+          <div class="counter-move"><span class="move-type-icon">⚙</span> Sunsteel Strike <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-s">
+        <div class="counter-rank">#8 — S TIER</div>
+        <div class="counter-name">Zacian (Crowned Sword)</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">⚙</span> Metal Claw</div>
+          <div class="counter-move"><span class="move-type-icon">⚙</span> Behemoth Blade <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-a">
+        <div class="counter-rank">#9 — A+ TIER</div>
+        <div class="counter-name">Garchomp</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud Shot</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Earth Power <span class="legacy-mark">†</span></div>
+        </div>
+      </div>
+      <div class="counter-card tier-a">
+        <div class="counter-rank">#10 — A+ TIER</div>
+        <div class="counter-name">Rhyperior</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud-Slap</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Earthquake</div>
+        </div>
+      </div>
+      <div class="counter-card tier-a">
+        <div class="counter-rank">#11 — A+ TIER</div>
+        <div class="counter-name">Mamoswine</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud-Slap</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> High Horsepower</div>
+        </div>
+      </div>
+      <div class="counter-card tier-a">
+        <div class="counter-rank">#12 — A+ TIER</div>
+        <div class="counter-name">Landorus</div>
+        <div class="counter-moves">
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Mud Shot</div>
+          <div class="counter-move"><span class="move-type-icon">🌍</span> Earth Power</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.25);">† Legacy Move &nbsp;|&nbsp; Source: LeekDuck / Pokebattler</div>
+  </div>
+
+  <!-- CTA after counters -->
+  <div style="margin-bottom:28px;margin-top:4px;">
+    <a href="#" onclick="openCheckout(event)" class="cta-btn">
+      <span class="cta-shine"></span>
+      🔓 Unlock the 60s Nihilego Strategy — $1
+    </a>
+    <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
+  </div>
+
+  <!-- Counter Table Preview (blurred extra) -->
+  <div class="ba-section">
+    <div class="section-title">Ranked counter table — preview</div>
+    <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);">
+      <div style="background:linear-gradient(135deg,rgba(255,63,164,0.2),rgba(155,31,255,0.2));padding:12px 16px;border-bottom:1px solid var(--border);">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;">⚔️ BEST COUNTERS (DPS RANKED)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">Ranked by DPS &amp; TDO performance</div>
+      </div>
+      <div style="background:var(--card);">
+        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:600;">
+          <span>#</span><span>Pokémon</span><span>Moveset</span><span style="text-align:center;">DPS</span><span style="text-align:center;">TDO</span><span style="text-align:center;">Rank</span>
+        </div>
+        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">1</span>
+          <span style="font-size:12px;font-weight:600;">Primal Groudon</span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Mud Shot / Precipice Blades</span>
+          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">22.14</span>
+          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">648.2</span>
+          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
+        </div>
+        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;background:rgba(255,255,255,0.02);">
+          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">2</span>
+          <span style="font-size:12px;font-weight:600;">Mega Garchomp</span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Mud Shot / Earth Power</span>
+          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">21.30</span>
+          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">589.7</span>
+          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
+        </div>
+        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
+          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">3</span>
+          <span style="font-size:12px;font-weight:600;">Landorus (Therian)</span>
+          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Mud Shot / Sandsear Storm</span>
+          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">19.95</span>
+          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">534.1</span>
+          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
+        </div>
+        <div style="position:relative;">
+          <div style="filter:blur(4px);pointer-events:none;opacity:0.35;">
+            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);">
+              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">4</span><span style="font-size:12px;font-weight:600;">Groudon</span><span style="font-size:10px;">Mud Shot / Precipice Blades</span><span style="font-size:12px;font-weight:700;text-align:center;">18.75</span><span style="font-size:11px;text-align:center;">612.5</span><span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
+            </div>
+            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">5</span><span style="font-size:12px;font-weight:600;">Excadrill</span><span style="font-size:10px;">Mud-Slap / Scorching Sands</span><span style="font-size:12px;font-weight:700;text-align:center;">17.45</span><span style="font-size:11px;text-align:center;">445.8</span><span style="background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
+            </div>
+            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;">
+              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">6</span><span style="font-size:12px;font-weight:600;">Zamazenta</span><span style="font-size:10px;">Metal Claw / Behemoth Bash</span><span style="font-size:12px;font-weight:700;text-align:center;">16.80</span><span style="font-size:11px;text-align:center;">489.1</span><span style="background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
+            </div>
+          </div>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,0,16,0.55);">
+            <div style="font-size:22px;margin-bottom:6px;">🔒</div>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--pink-light);">+9 more counters in full guide</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;">Budget picks • Shadow variants • Mega options</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA after blurred table -->
+  <div style="margin-bottom:28px;margin-top:4px;">
+    <a href="#" onclick="openCheckout(event)" class="cta-btn">
+      <span class="cta-shine"></span>
+      🔓 Unlock Full Counter List + Strategy — $1
+    </a>
+    <div class="cta-sub">🔒 Secure checkout via Gumroad · Instant access · No signup required</div>
+  </div>
   <div class="level-section">
     <div class="level-title">⚔️ Find Your Best Team</div>
     <div class="level-desc">Select your trainer level to see the recommended raid team</div>
@@ -237,66 +512,8 @@
     <div style="background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03));border:1px solid rgba(34,197,94,0.25);border-radius:16px;padding:18px 20px;">
       <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#22c55e;font-weight:600;margin-bottom:8px;">🔓 FREE PRO TIP — UNLOCKED</div>
       <div style="font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;">Always lead with Ground-type attacker</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">Ground moves hit Nihilego's Rock/Poison typing for double super-effective damage from the first second. This alone cuts 15–25 seconds off your clear time compared to players who open with random counters.</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">Ground moves hit Nihilego's Rock/Poison typing for double super-effective damage from the first second. Primal Groudon with Mud Shot + Precipice Blades is the #1 pick. This alone cuts 15–25 seconds off your clear time compared to players who open with Rock counters.</div>
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(34,197,94,0.15);font-size:12px;color:rgba(255,255,255,0.35);">The full system stacks 5+ optimizations like this — that's how you reach ~60 sec clears.</div>
-    </div>
-  </div>
-
-  <!-- Counter Table Preview -->
-  <div class="ba-section">
-    <div class="section-title">Preview from the guide</div>
-    <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);">
-      <div style="background:linear-gradient(135deg,rgba(255,63,164,0.2),rgba(155,31,255,0.2));padding:12px 16px;border-bottom:1px solid var(--border);">
-        <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;">⚔️ BEST COUNTERS (TOP PICKS)</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">Ranked by DPS & TDO performance</div>
-      </div>
-      <div style="background:var(--card);">
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:600;">
-          <span>#</span><span>Pokémon</span><span>Moveset</span><span style="text-align:center;">DPS</span><span style="text-align:center;">TDO</span><span style="text-align:center;">Rank</span>
-        </div>
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
-          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">1</span>
-          <span style="font-size:12px;font-weight:600;">Primal Groudon</span>
-          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Mud Shot / Precipice Blades</span>
-          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">22.14</span>
-          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">648.2</span>
-          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
-        </div>
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;background:rgba(255,255,255,0.02);">
-          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">2</span>
-          <span style="font-size:12px;font-weight:600;">Shadow Excadrill 🔥</span>
-          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Mud Shot / Scorching Sands</span>
-          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">19.85</span>
-          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">521.4</span>
-          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S+</span>
-        </div>
-        <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;">
-          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--pink);font-size:14px;">3</span>
-          <span style="font-size:12px;font-weight:600;">Garchomp</span>
-          <span style="font-size:10px;color:rgba(255,255,255,0.45);">Mud Shot / Earth Power</span>
-          <span style="font-size:12px;font-weight:700;color:#22c55e;text-align:center;">17.62</span>
-          <span style="font-size:11px;color:rgba(255,255,255,0.55);text-align:center;">498.3</span>
-          <span style="background:#22c55e;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
-        </div>
-        <div style="position:relative;">
-          <div style="filter:blur(4px);pointer-events:none;opacity:0.35;">
-            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">4</span><span style="font-size:12px;font-weight:600;">Rhyperior</span><span style="font-size:10px;">Mud Slap / Earthquake</span><span style="font-size:12px;font-weight:700;text-align:center;">16.90</span><span style="font-size:11px;text-align:center;">612.5</span><span style="background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">S</span>
-            </div>
-            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">5</span><span style="font-size:12px;font-weight:600;">Swampert</span><span style="font-size:10px;">Water Gun / Hydro Cannon</span><span style="font-size:12px;font-weight:700;text-align:center;">16.45</span><span style="font-size:11px;text-align:center;">445.8</span><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
-            </div>
-            <div style="display:grid;grid-template-columns:24px 1fr 1fr 48px 48px 44px;gap:4px;padding:10px 12px;">
-              <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;">6</span><span style="font-size:12px;font-weight:600;">Metagross</span><span style="font-size:10px;">Bullet Punch / Meteor Mash</span><span style="font-size:12px;font-weight:700;text-align:center;">15.98</span><span style="font-size:11px;text-align:center;">489.1</span><span style="background:#f59e0b;color:#000;font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;text-align:center;">A+</span>
-            </div>
-          </div>
-          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,0,16,0.55);">
-            <div style="font-size:22px;margin-bottom:6px;">🔒</div>
-            <div style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--pink-light);">+7 more counters in full guide</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;">Budget picks • Shadow variants • Mega options</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -308,12 +525,13 @@
         <div class="get-header-title">⚔️ FULL GUIDE — Complete System</div>
       </div>
       <div class="get-items">
-        <div class="get-item"><span class="get-check">✓</span> Best Nihilego counters — full ranked list</div>
+        <div class="get-item"><span class="get-check">✓</span> All 12+ Nihilego counters — full ranked list with DPS/TDO stats</div>
         <div class="get-item"><span class="get-check">✓</span> Budget → Standard → Pro → Mega teams</div>
         <div class="get-item"><span class="get-check">✓</span> Step-by-step raid strategy</div>
-        <div class="get-item"><span class="get-check">✓</span> Raid Hour efficiency system (8-12 raids/hour)</div>
-        <div class="get-item"><span class="get-check">✓</span> Weather boost advantage breakdown</div>
-        <div class="get-item"><span class="get-check">✓</span> Shiny hunting optimization</div>
+        <div class="get-item"><span class="get-check">✓</span> Raid Hour efficiency system (8–12 raids/hour)</div>
+        <div class="get-item"><span class="get-check">✓</span> Weather boost advantage (Partly Cloudy &amp; Cloudy boosts)</div>
+        <div class="get-item"><span class="get-check">✓</span> Shiny hunting optimization (~5% shiny rate)</div>
+        <div class="get-item"><span class="get-check">✓</span> Shadow &amp; Legacy move recommendations</div>
       </div>
       <div class="get-locked">
         <div class="locked-label">💡 Costs less than a single raid pass</div>
@@ -331,7 +549,7 @@
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" id="prog-fill"></div>
     </div>
-    <div class="progress-note">Updated in real time · Only available during this event</div>
+    <div class="progress-note">Updated in real time · Only available during this event (May 6–12)</div>
   </div>
 
   <!-- Why not Google -->
@@ -379,7 +597,8 @@ for (let i = 0; i < 25; i++) {
   pc.appendChild(p);
 }
 
-const endDate = new Date('2026-05-13T23:59:00Z');
+// Event ends May 12, 2026 23:59 UTC
+const endDate = new Date('2026-05-12T23:59:00Z');
 function updateCountdown() {
   const now = new Date();
   let diff = Math.max(0, endDate - now);
@@ -418,10 +637,30 @@ setInterval(() => {
 }, 45000);
 
 const teams = {
-  budget: { label: '🟢 Budget Team', pokemon: ['Golem', 'Rhydon', 'Vaporeon', 'Espeon'], note: 'Focus on Ground & Water moves.', time: '100–120 sec', players: '4–6 players', revives: '6–8 revives' },
-  standard: { label: '🟡 Standard Team', pokemon: ['Excadrill', 'Metagross', 'Swampert', 'Garchomp'], note: 'Mix of Ground & Steel attackers.', time: '75–90 sec', players: '2–4 players', revives: '4–6 revives' },
-  pro: { label: '🔴 Pro Team', pokemon: ['Primal Groudon', 'Shadow Mewtwo', 'Excadrill ×2', 'Garchomp'], note: 'Fastest possible clear. Can duo with high-level players.', time: '50–65 sec', players: '2–3 players', revives: '2–3 revives' },
-  mega: { label: '⚡ Mega Team', pokemon: ['Primal Groudon', 'Mega Swampert', 'Shadow Mewtwo', 'Excadrill ×2'], note: 'Mega Swampert + Primal Groudon = maximum Ground damage boost.', time: '40–55 sec', players: '2 players', revives: '1–2 revives' }
+  budget: {
+    label: '🟢 Budget Team',
+    pokemon: ['Golem', 'Rhydon', 'Vaporeon', 'Swampert'],
+    note: 'Focus on Ground & Water moves. Golem and Rhydon are solid budget Ground picks.',
+    time: '100–120 sec', players: '4–6 players', revives: '6–8 revives'
+  },
+  standard: {
+    label: '🟡 Standard Team',
+    pokemon: ['Excadrill', 'Garchomp', 'Rhyperior', 'Swampert'],
+    note: 'Mix of Ground attackers. Excadrill with Mud-Slap + Scorching Sands is your MVP.',
+    time: '75–90 sec', players: '2–4 players', revives: '4–6 revives'
+  },
+  pro: {
+    label: '🔴 Pro Team',
+    pokemon: ['Primal Groudon', 'Landorus (T)', 'Excadrill ×2', 'Garchomp'],
+    note: 'All top-tier Ground attackers. Can duo with high-level players.',
+    time: '50–65 sec', players: '2–3 players', revives: '2–3 revives'
+  },
+  mega: {
+    label: '⚡ Mega Team',
+    pokemon: ['Primal Groudon', 'Mega Garchomp', 'Landorus (T)', 'Excadrill ×2'],
+    note: 'Mega Garchomp + Primal Groudon = maximum Ground damage boost for the whole lobby.',
+    time: '40–55 sec', players: '2 players', revives: '1–2 revives'
+  }
 };
 
 function showTeam(e, type) {
